@@ -1,4 +1,4 @@
-# SC-DTI: Structure–Sequence Collaborative Learning for Drug–Target Interaction Prediction
+# SC-DTI: Structure–Context Multimodal Framework with Local–Global Collaborative Modeling for Drug–Target Interaction Prediction
 
 SC-DTI is a deep learning framework for drug–target interaction (DTI) prediction. The model integrates drug molecular graphs, protein contact graphs, SMILES sequence semantics, protein sequence representations, fine-grained graph–sequence alignment, and atom–residue interaction modeling to predict whether a given drug–target pair has an interaction.
 
