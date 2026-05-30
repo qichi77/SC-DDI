@@ -1,10 +1,10 @@
-# SC-DTI: Structure–Context Multimodal Framework with Local–Global Collaborative Modeling for Drug–Target Interaction Prediction
+# Structure-Aware Local–Global Sequence Modeling for Drug–Target Interaction Prediction
 
-SC-DTI is a deep learning framework for drug–target interaction (DTI) prediction. The model integrates drug molecular graphs, protein contact graphs, SMILES sequence semantics, protein sequence representations, fine-grained graph–sequence alignment, and atom–residue interaction modeling to predict whether a given drug–target pair has an interaction.
+SL-DTI is a deep learning framework for drug–target interaction (DTI) prediction. The model integrates drug molecular graphs, protein contact graphs, SMILES sequence semantics, protein sequence representations, fine-grained graph–sequence alignment, and atom–residue interaction modeling to predict whether a given drug–target pair has an interaction.
 
 ## Overview
 
-Drug–target interaction prediction is formulated as a binary classification task. Given a drug molecule and a target protein, SC-DTI learns multi-modal representations from both structural and sequential views and outputs the probability of interaction.
+Drug–target interaction prediction is formulated as a binary classification task. Given a drug molecule and a target protein, SL-DTI learns multi-modal representations from both structural and sequential views and outputs the probability of interaction.
 
 The framework mainly contains the following modules:
 
@@ -18,7 +18,7 @@ The framework mainly contains the following modules:
 
 ## Model Architecture
 
-SC-DTI consists of four major components.
+SL-DTI consists of four major components.
 
 ### 1. SC-Graph Encoding Block
 
@@ -31,7 +31,7 @@ After multiple graph encoding layers, graph-level representations are obtained f
 
 ### 2. Hybrid Sequence Encoder
 
-For sequence modeling, SC-DTI uses:
+For sequence modeling, SL-DTI uses:
 
 - **ChemBERTa** to encode drug SMILES sequences.
 - **Amino acid embedding** to encode target protein sequences.
@@ -41,11 +41,11 @@ For sequence modeling, SC-DTI uses:
 
 ### 3. Fine-Grained Graph–Sequence Alignment
 
-To bridge the semantic gap between 2D molecular graphs and 1D SMILES sequences, SC-DTI introduces an atom–token alignment module. Drug atom-level graph features are used as queries, while SMILES token features are used as keys and values. This allows atom representations to incorporate relevant chemical syntax information from SMILES tokens.
+To bridge the semantic gap between 2D molecular graphs and 1D SMILES sequences, SL-DTI introduces an atom–token alignment module. Drug atom-level graph features are used as queries, while SMILES token features are used as keys and values. This allows atom representations to incorporate relevant chemical syntax information from SMILES tokens.
 
 ### 4. Heterogeneous Feature Fusion and Prediction
 
-SC-DTI applies gated fusion to adaptively balance graph-derived structural features and sequence-derived semantic features. The final prediction module further models bidirectional atom–residue interactions and outputs binary classification logits.
+SL-DTI applies gated fusion to adaptively balance graph-derived structural features and sequence-derived semantic features. The final prediction module further models bidirectional atom–residue interactions and outputs binary classification logits.
 
 ## Requirements
 
@@ -111,7 +111,7 @@ Drug molecular graphs can be constructed from SMILES using RDKit and BRICS. Prot
 
 ## Model Output
 
-SC-DTI outputs two-dimensional logits:
+SL-DTI outputs two-dimensional logits:
 
 ```python
 scores = model(data)  # shape: [batch_size, 2]
@@ -143,8 +143,8 @@ loss = torch.nn.functional.cross_entropy(scores, labels.long())
 A recommended project structure is:
 
 ```text
-SC-DTI/
-├── model.py                 # SC-DTI model architecture
+SL-DTI/
+├── model.py                 # SL-DTI model architecture
 ├── chemberta.py             # ChemBERTa encoder
 ├── layers.py                # auxiliary layers and RBF encoding
 ├── config.py                # hyperparameter configuration
